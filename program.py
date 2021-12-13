@@ -76,7 +76,7 @@ try:
                     sex = friend_id.get('sex')
                     sex = 'male' if sex == 2 else 'female'
                     if extension == '.csv':
-                        with open(f"{path}/{target_id}.csv", 'a') as myfile:
+                        with open(f"{path}/{target_id}.csv", 'a', encoding="utf-8") as myfile:
                             wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
                             wr.writerow([first_name, last_name, country, city, bdate, sex])
                     elif extension == '.json':
@@ -87,12 +87,12 @@ try:
                                     'bdate': bdate,
                                     'sex': sex})
                     elif extension == '.tsv':
-                        with open(f"{path}/{target_id}.tsv", 'a') as myfile:
+                        with open(f"{path}/{target_id}.tsv", 'a', encoding="utf-8") as myfile:
                             wr = csv.writer(myfile, delimiter='\t')
                             wr.writerow([first_name, last_name, country, city, bdate, sex])
 
                 if extension == '.json':
-                    with open(f"{path}/{target_id}.json", 'w') as myfile:
+                    with open(f"{path}/{target_id}.json", 'w', encoding="utf-8") as myfile:
                         myfile.write(json.dumps({'friends': arr}))
                         del arr
             else:
